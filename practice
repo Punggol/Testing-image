@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Layout</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: black; /* Text color for all elements */
+        }
+
+        /* Header styles */
+        header {
+            background-color: yellow; /* Yellow header */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Navigation styles */
+        nav {
+            background-color: lightblue; /* Light blue navigation */
+            float: left; /* Align nav to the left */
+            width: 25%; /* Occupies 1/4 of the page width */
+            height: calc(100vh - 60px); /* Full height minus header */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Section styles */
+        section {
+            background-color: lightgreen; /* Light green section */
+            float: left; /* Allow it to sit beside the nav */
+            width: 75%; /* Occupies 3/4 of the page width */
+            height: calc(100vh - 60px); /* Full height minus header */
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        /* Article box styles */
+        article {
+            background-color: lightcoral; /* Light red article boxes */
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+ /* Button box styles */
+      
+        button {
+            background-color: lightcoral; /* Light red article boxes */
+            margin-bottom: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+           color:white;
+            border-radius: 5px;
+}
+button:hover {
+  background-color: orange; /* Orange on hover */
+}
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: yellow; /* Matches header */
+            clear: both; /* Ensures footer starts on a new line */
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Top Header</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <p>Navigation Links:</p>
+         
+             
+        <a href="https://abcnews.go.com/" class="nav-item">Home</a>
+      <br>
+  <a href="https://en.wikipedia.org/wiki/The_Guardian" class="nav-item">SERVICE</a>
+     <br>
+  <a href=" https://www.wix.com/" class="nav-item">CONTACT</a><br>
+      
+  <a href=" https://farmyishun.wixsite.com/herbs-yishun " class="nav-item">HELP</a>
+    </nav>
+
+    <!-- Main Section -->
+    <section>
+        <article>
+            <h2>Article 1</h2>
+            <p>This is the first article.</p>
+        </article>
+        <article>
+            <h2>Article 2</h2>
+            <p>This is the second article.</p>
+        </article>
+      <button>
+            <h2>Button</h2>
+  <a href="https://www.jalanow.com/johor-singapore-live-traffic-cam.htm "       class=" button">Click Here</a>
+      </button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Footer Content</p>
+    </footer>
+</body>
+</html>
