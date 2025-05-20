@@ -19,6 +19,25 @@
             text-align: center;
             padding: 20px;
         }
+            
+        header img {
+            width:100%;
+            height:auto;
+            margin-top: 5px; /* Adjust spacing above */
+            max-height: 200px; /* Limits the height to prevent it from being too big */
+    object-fit: cover; /* Ensures the image fits within the given space */
+        }
+.image-container {
+    position: relative; /* Ensures absolute positioning works inside */
+    display: inline-block;
+    width: 100%; /* Keeps the image-container width consistent */
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
         .overlay-text {
     position: absolute;
     top: 50%;
@@ -65,7 +84,7 @@
  /* Button box styles */
       
         button {
-            background-color: red; /* Light red article boxes */
+            background-color:yellow; /* Light red article boxes */
             margin-bottom: 20px;
             padding: 10px;
             box-sizing: border-box;
@@ -73,7 +92,7 @@
             border-radius: 5px;
 }
 button:hover {
-  background-color:blue; /* Orange on hover */
+  background-color:red; /* Orange on hover */
 }
         }
 
