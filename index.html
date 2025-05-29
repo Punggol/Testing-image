@@ -80,7 +80,7 @@
  /* Button box styles */
       
         button {
-            background-color:brown; /*b Light red article boxes */
+            background-color:green; /*b Light red article boxes */
             margin-bottom: 20px;
             padding: 10px;
             box-sizing: border-box;
@@ -88,7 +88,7 @@
             border-radius: 5px;
 }
 button:hover {
-  background-color:white; /* Orange on hover */
+  background-color:pink; /* Orange on hover */
 }
         
 
@@ -109,7 +109,24 @@ button:hover {
         <h1 class="overlay-text">Welcome to the herb garden<br> Please enter</h1>
     </div>
     </header>
+<script>
+    const images = [
+        "mongolian yurk.jpg",
+        "pond.jpg",
+        "entrance.jpg",
+        "packing area.jpg",
+        "touchwood.jpg"
+    ]; // Replace with actual image paths
 
+    let index = 0;
+    function changeImage() {
+        document.querySelector("header img").src = images[index];
+        index = (index + 1) % images.length; // Cycle through images
+    }
+
+    setInterval(changeImage, 3000); // Change every 3 seconds
+    changeImage(); // Initial load
+</script>
     <!-- Navigation -->
     <nav>
         <p>Navigation Links:</p>
