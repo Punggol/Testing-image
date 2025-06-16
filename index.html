@@ -104,13 +104,19 @@ header {
             padding: 5px;
         }            
            
-        header img {
+       /* header img {
             width:100%;
             height:auto;
             margin-top: 5px; /* Adjust spacing above */
-            max-height: 300px; /* Limits the height to prevent it from being too big */
-    object-fit: contain; /* Ensures the image fits within the given space */
-        }
+           /* max-height: 300px; /* Limits the height to prevent it from being too big */
+   /* object-fit: contain; /* Ensures the image fits within the given space */
+   /*     } */
+
+        header img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes unwanted spaces */
+}
 .image-container {
     position: relative; /* Ensures absolute positioning works inside */
     display: inline-block;
