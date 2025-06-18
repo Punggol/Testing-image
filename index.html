@@ -551,9 +551,40 @@ button:hover {
     <!--<footer>
         <p>Footer Content</p>
     </footer> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("search-input");
+    const searchButton = document.getElementById("search-button");
+
+    function runSearch() {
+        let searchQuery = searchInput.value.toLowerCase();
+        let links = document.querySelectorAll("nav p a");
+        
+        for (let link of links) {
+            let linkText = link.textContent.toLowerCase();
+            if (linkText.includes(searchQuery)) {
+                window.open(link.href, "_blank");
+                return;
+            }
+        }
+        alert("No matching link found");
+    }
+
+    // When clicking the search icon
+    searchButton.addEventListener("click", runSearch);
+
+    // When pressing Enter inside the input
+    searchInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            runSearch();
+        }
+    });
+});
+</script>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!--  <script>
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("search-button").addEventListener("click", function () {
         let searchQuery = document.getElementById("search-input").value.toLowerCase(); // Get and convert input to lowercase
