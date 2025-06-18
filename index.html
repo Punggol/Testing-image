@@ -539,34 +539,51 @@ button:hover {
     </footer> -->
 <!-- This script help to activate a search when a text is entered in the Search box after pressing enter. It is JS used for dynamic
     action in html -->
-  <script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
 
-    function runSearch() {
-        const searchQuery = searchInput.value.toLowerCase();
-        const links = document.querySelectorAll("nav p a");
-        const matchedLinks = [];
+    let multipleResults = []; // holds matching links when multiple are found
 
+    function runSearch() {
+        const searchQuery = searchInput.value.toLowerCase().trim();
+        const links = document.querySelectorAll("nav p a");
+
+        // Check if we're selecting from previous multiple matches
+        if (multipleResults.length > 0) {
+            for (let item of multipleResults) {
+                if (item.text.toLowerCase() === searchQuery) {
+                    window.open(item.href, "_blank");
+                    multipleResults = []; // reset
+                    return;
+                }
+            }
+            alert("No matching link found in the previous results.");
+            return;
+        }
+
+        // Fresh search
+        const matched = [];
         for (let link of links) {
-            const linkText = link.textContent.toLowerCase();
-            if (linkText.includes(searchQuery)) {
-                matchedLinks.push(link.textContent.trim());
+            const text = link.textContent.trim();
+            if (text.toLowerCase().includes(searchQuery)) {
+                matched.push({ text: text, href: link.href });
             }
         }
 
-        if (matchedLinks.length > 0) {
-            alert("Search results found: " + matchedLinks.join(", "));
+        if (matched.length === 1) {
+            window.open(matched[0].href, "_blank");
+        } else if (matched.length > 1) {
+            multipleResults = matched; // store for next input
+            const resultList = matched.map(item => item.text).join(", ");
+            alert("Search results found: " + resultList + "\n\nPlease type your selection exactly to open.");
         } else {
-            alert("No matching link found");
+            alert("No matching link found.");
         }
     }
 
-    // Trigger search on button click
     searchButton.addEventListener("click", runSearch);
-
-    // Trigger search on Enter key press
     searchInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             runSearch();
