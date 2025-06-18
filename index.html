@@ -543,18 +543,18 @@ button:hover {
     document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
-
-     function runSearch() {
-    const searchQuery = searchInput.value.toLowerCase();
-    const links = document.querySelectorAll("nav p a");
-    const matchedLinks = [];
-
-    for (let link of links) {
-        const linkText = link.textContent.toLowerCase();
-        if (linkText.includes(searchQuery)) {
-            matchedLinks.push(link.textContent.trim());
+ 
+        function runSearch() {
+        let searchQuery = searchInput.value.toLowerCase();
+        let links = document.querySelectorAll("nav p a");
+        
+        for (let link of links) {
+            let linkText = link.textContent.toLowerCase();
+            if (linkText.includes(searchQuery)) {
+                window.open(link.href, "_blank");
+                return;
+            } 
         }
-   
 
     if (matchedLinks.length > 0) {
         alert("Search results found: " + matchedLinks.join(", "));
