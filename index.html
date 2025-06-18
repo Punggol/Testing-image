@@ -539,77 +539,8 @@ button:hover {
     </footer> -->
 <!-- This script help to activate a search when a text is entered in the Search box after pressing enter. It is JS used for dynamic
     action in html -->
- <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("search-input");
-    const searchButton = document.getElementById("search-button");
 
-    let multipleResults = []; // holds matching links when multiple are found
-
-    function runSearch() {
-    const searchQuery = searchInput.value.toLowerCase().trim();
-    const links = document.querySelectorAll("nav p a");
-
-    // Check if user is selecting from previously stored results
-    if (multipleResults.length > 0) {
-        for (let item of multipleResults) {
-            if (item.text.toLowerCase().includes(searchQuery)) {
-                window.open(item.href, "_blank");
-                multipleResults = [];
-                return;
-            }
-        }
-        alert("No matching link found in the previous results.");
-        return;
-    }
-
-    // Fresh search round
-    const matched = [];
-    for (let link of links) {
-        const text = link.textContent.trim();
-        if (text.toLowerCase().includes(searchQuery)) {
-            matched.push({ text: text, href: link.href });
-        }
-    }
-
-    if (matched.length === 1) {
-        window.open(matched[0].href, "_blank");
-    } else if (matched.length > 1) {
-        multipleResults = matched;
-        const resultList = matched.map(item => item.text).join(", ");
-        alert("Search results found: " + resultList + "\n\nPlease enter one of these terms to open its link.");
-    } else {
-        alert("No matching link found.");
-    }
-}
-        // Fresh search
-        const matched = [];
-        for (let link of links) {
-            const text = link.textContent.trim();
-            if (text.toLowerCase().includes(searchQuery)) {
-                matched.push({ text: text, href: link.href });
-            }
-        }
-
-        if (matched.length === 1) {
-            window.open(matched[0].href, "_blank");
-        } else if (matched.length > 1) {
-            multipleResults = matched; // store for next input
-            const resultList = matched.map(item => item.text).join(", ");
-            alert("Search results found: " + resultList + "\n\nPlease type your selection exactly to open.");
-        } else {
-            alert("No matching link found.");
-        }
-    }
-
-    searchButton.addEventListener("click", runSearch);
-    searchInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            runSearch();
-        }
-    });
-});
-</script>
+    
  
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
