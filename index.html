@@ -539,12 +539,13 @@ button:hover {
     </footer> -->
 <!-- This script help to activate a search when a text is entered in the Search box after pressing enter. It is JS used for dynamic
     action in html -->
-<script>
+ 
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
-}
- function runSearch() {
+
+    function runSearch() {
         let searchQuery = searchInput.value.toLowerCase();
         let links = document.querySelectorAll("nav p a");
         
@@ -553,9 +554,22 @@ document.addEventListener("DOMContentLoaded", function () {
             if (linkText.includes(searchQuery)) {
                 window.open(link.href, "_blank");
                 return;
-            } 
+            }
         }
-                </script>
+        alert("No matching link found");
+    }
+
+    // When clicking the search icon
+    searchButton.addEventListener("click", runSearch);
+
+    // When pressing Enter inside the input
+    searchInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            runSearch();
+        }
+    });
+});
+</script>         
  
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
