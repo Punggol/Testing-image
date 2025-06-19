@@ -541,34 +541,70 @@ button:hover {
     action in html -->
  
  <script>
-document.addEventListener("DOMContentLoaded", function () {
+ 
+    document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
+    let previousMatches = []; // Store previous matches for refinement
 
     function runSearch() {
-        let searchQuery = searchInput.value.toLowerCase();
-        let links = document.querySelectorAll("nav p a");
-        
+        const searchQuery = searchInput.value.toLowerCase().trim();
+        const links = document.querySelectorAll("nav p a");
+        const currentMatches = [];
+
+        // Find all matching links
         for (let link of links) {
-            let linkText = link.textContent.toLowerCase();
+            const linkText = link.textContent.toLowerCase();
             if (linkText.includes(searchQuery)) {
-                window.open(link.href, "_blank");
+                currentMatches.push({
+                    text: link.textContent,
+                    href: link.href
+                });
+            }
+        }
+
+        // Case 1: No matches found
+        if (currentMatches.length === 0) {
+            alert("No matching link found");
+            previousMatches = []; // Reset stored matches
+            return;
+        }
+
+        // Case 2: Only one match → open it immediately
+        if (currentMatches.length === 1) {
+            window.open(currentMatches[0].href, "_blank");
+            previousMatches = []; // Reset stored matches
+            return;
+        }
+
+        // Case 3: Multiple matches → check if refining a previous search
+        if (previousMatches.length > 0) {
+            const exactMatch = currentMatches.find(match => 
+                match.text.toLowerCase() === searchQuery
+            );
+            if (exactMatch) {
+                window.open(exactMatch.href, "_blank");
+                previousMatches = []; // Reset after opening
                 return;
             }
         }
-        alert("No matching link found");
+
+        // Case 4: Show multiple matches and store them
+        alert(`Multiple matches found. Refine your search from:\n${currentMatches.map(m => m.text).join("\n")}`);
+        previousMatches = currentMatches; // Store for next search
     }
 
-    // When clicking the search icon
+    // Search on button click
     searchButton.addEventListener("click", runSearch);
 
-    // When pressing Enter inside the input
+    // Search on Enter key
     searchInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             runSearch();
         }
     });
 });
+     
 </script>         
  
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
