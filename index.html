@@ -56,17 +56,14 @@
     background-color:#f22e6d; /* Red background */
     color: white; /* Text color */
     width: 100%; /* Full-width */
-    height: auto; /* Set height */
+    height: 45mm; /* Set height */
     display: flex;
     align-items: center;
     justify-content: space-between; /* Align text and email */
-    padding: 10px 15px; /* Space inside banner */
+    padding: 10px; /* Space inside banner */
     box-sizing: border-box;
     font-size: 20px;
     font-weight: bold;
-        flex-direction: column; /* Stack items vertically on mobile */
-    align-items: flex-start;
-    
 }
 /* Adjust the banner style for the search box */
 
@@ -74,11 +71,10 @@
     display: flex;
     align-items: center;
     gap: 5px; /* Space between input and button */
-    width: 100%;
 }
 
 .search-box input {
-    width: 100%; /* Adjust width */
+    width: 200px; /* Adjust width */
     border-radius: 5px;
 }
 
@@ -96,8 +92,7 @@
 /* this part is from chatgpt */
 .banner-content {
     flex-grow: 1;
-    max-width: 100%; /* Allow space for search box */
-    margin-bottom: 10px;
+    max-width: 75%; /* Allow space for search box */
 }
       
 /* Ensure spacing between banner and header */
@@ -114,10 +109,7 @@ header {
 /* Style contact email separately */
 .contact {
     font-size: 10px; /* Slightly smaller font for email */
-    margin-left: 0; /* Adjust spacing on the right */
-     margin-top: 10px;
-    width: 100%;
-    text-align: right;
+    margin-left: 1000px; /* Adjust spacing on the right */
 }
      /* Header1 styles to add another block of text before the main Header */
         .header1 {
@@ -172,21 +164,22 @@ header {
   
       
         /* Navigation styles */
-       <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link 1</a>
-        </li>
-        <!-- other nav items -->
-      </ul>
-    </div>
-  </div>
-</nav>
+        nav {
+            background-color: lightblue; /* Light blue navigation */
+            float: left; /* Align nav to the left */
+            width: 35%; /* Occupies 1/4 of the page width */
+            height: calc(1110vh - 60px); /*extended from 100vh to 500vh 
+            so it can cover more of the scrollable page ,  minus header */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+         /* These codes are for adjusting the font size of the clickable content */
+        nav  a {
+    font-size: 20px; /* Adjust the size as needed */
+    font-weight: bold; /* Optional for emphasis */
+    color: blue; /* Optional: Set link color */
+    text-decoration: none; /* Optional: Remove underline */
+}
 
         /* Section styles */
         section {
@@ -228,23 +221,7 @@ header {
 button:hover {
   background-color:yellow; /* Orange on hover */
 }
-     /* Add these to your styles to make it more mobile friendly */
-@media (max-width: 768px) {
-    nav, section {
-        width: 100% !important;
-        float: none !important;
-        height: auto !important;
-        padding: 15px !important;
-    }
-    
-    nav a, article h2 a {
-        font-size: 16px !important;
-    }
-    
-    .header1, header {
-        padding: 10px 5px !important;
-    }
-}   
+        
 
         /* Footer styles */
         footer {
