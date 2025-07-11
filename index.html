@@ -144,8 +144,9 @@ header {
     display: inline-block;
     width: 100%; /* Keeps the image-container width consistent */
 }
- 
-        .overlay-text {
+ /* Animation for Header Text: <h1 class="overlay-text">No Entry to GUI as the area is under construction</h1> */
+        
+      .overlay-text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -153,14 +154,36 @@ header {
     color: lightgreen;
     font-size: 24px;
     font-weight: bold;
-    background:  none; /* Removes the strip */
+    background: none;
     padding: 10px;
     border-radius: 5px;
-    text-align: center; /* Ensures proper centering */
-    width: 100%; /* Matches the width of the image */
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; /* Create a black shadow outline to the text */
-   
+    text-align: center;
+    width: 100%;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    
+    /* Animation properties */
+    opacity: 1;
+    animation: 
+        appear 5s linear,
+        flash 0.5s linear 5s 4, /* flashes 4 times (2 seconds total) */
+        fadeOut 1s linear 7s forwards;
 }
+  
+@keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+      
   
       
         /* Navigation styles */
